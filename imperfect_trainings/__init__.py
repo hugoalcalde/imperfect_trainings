@@ -1,0 +1,2 @@
+from imperfect_trainings.models.model import MyNeuralNet
+from imperfect_trainings.predict_model import predict
