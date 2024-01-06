@@ -1,6 +1,32 @@
-# imperfect_trainings
 
-Final Project.
+
+# Analysis of the impact of incorrectly labeled training sets in the medical domain. 
+
+## Authors 
+
+Hugo Alcalde (s222700) : https://github.com/hugoalcalde
+
+Berta Plandolit (s222552) : https://github.com/bertaplandolit 
+
+Christof Haye (s222577) : (githublink)
+
+## Project Descriptions
+
+In this project, we will develop an MLOps pipeline for an image classification problem focused on brain hemorrhage prediction on CTs. The primary objective is to assess the impact of incorrect labels in the training set. To achieve this, we will conduct a series of experiments, randomly changing a percentage of the training labels, and evaluate the resulting accuracy in the test and validation sets. This analysis aims to simulate real-world scenarios, particularly prevalent in the medical domain, where data sets are rarely 100% accurate. The goal is to determine whether the model can still generalize results and make accurate predictions despite imperfect training data.
+
+The original dataset, sourced from Kaggle (https://www.kaggle.com/datasets/felipekitamura/head-ct-hemorrhage), comprises head CTs. The classification model identifies the presence of an hemorrhage in the provided pictures.
+
+For the implementation, we plan to utilize the following frameworks, models and tools:
+
+- The selected model will be a 2D DenseNet, which is a Convolutional Neural Network (CNN) which uses residual connections in each of the layers and that has shown excellent performance in classification tasks. 
+
+- For the implementation of the model, we will use a Pytorch-based third-party package (https://monai.io/), which is freely available collaborative frameworks built for accelerating research and clinical collaboration in Medical Imaging.
+
+- Due to the goal of the project, which is not obtaining good modeling results but to analyze the impact of errors in datasets, reproducibility and scalability are two key points to make sure the pipeline we propose is applicable to other datasets and to make sure that the changes in the accuracy of the network are due to the experimental changes we are making in the training data. For that, we will use cookiecutter for code structure organization, which will ensure easy comparisons between the trained models, and Docker images, that will provide us of a common and controlled environment for training the different models. 
+
+In other words, in this project, Machine Learning Operations (MLOps) tools are used for creating an expandable workflow for the analysis of the impact of changes in the training dataset for Deep Learning models applied to classification tasks. 
+
+
 
 ## Project structure
 
