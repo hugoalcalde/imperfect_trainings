@@ -8,7 +8,7 @@ Hugo Alcalde (s222700) : https://github.com/hugoalcalde
 
 Berta Plandolit (s222552) : https://github.com/bertaplandolit 
 
-Christof Haye (s222577) : (githublink)
+Christof Haye (s222577) : https://github.com/Christooof
 
 ## Project Descriptions
 
