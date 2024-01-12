@@ -1,0 +1,8 @@
+learning_rate : 0.01
+loss_function:
+  _target_: torch.nn.CrossEntropyLoss
+optimizer : 
+  _target_: torch.optim.Adam
+epochs : 5
+training_name : baseline_training 
+data_path : data/processed/processed_tensor.pt

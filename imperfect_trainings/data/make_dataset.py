@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     generator = torch.Generator().manual_seed(42)
     dataset_train, dataset_test = random_split(dataset, [0.75, 0.25], generator)
-                 
+
 
     # Specify batch size for DataLoader
 
