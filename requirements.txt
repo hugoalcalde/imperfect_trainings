@@ -1,1 +1,7 @@
-torch >= 2.1.0
+hydra-core==1.3.2
+matplotlib==3.8.1
+monai==1.3.0
+monai_weekly==1.4.dev2401
+pandas==2.1.4
+torch==2.1.2
+torchvision==0.16.2

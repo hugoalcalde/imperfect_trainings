@@ -1,8 +1,11 @@
 from monai.networks.nets import densenet121
-from monai.engines import SupervisedTrainer
 import logging
 import torch 
 import sys
+import hydra
+import os 
+import matplotlib.pyplot as plt 
+from hydra.utils import instantiate
 import random
 import copy
 
@@ -22,6 +25,7 @@ def change_labels (labels, percentage, random_seed):
     return new_labels
 
 
+
 def calculate_accuracy(logits, targets):
     """Calculate the accuracy"""
     # Get predicted class indices
@@ -34,45 +38,96 @@ def calculate_accuracy(logits, targets):
     accuracy = correct_predictions / targets.size(0)
     
     return accuracy
+  
+  
+log = logging.getLogger(__name__)
 
 
-# Model Definition : 
-model = densenet121(spatial_dims=2, in_channels=1, out_channels=2).to("cpu")
+@hydra.main(config_name="config_train.yaml")
+def train(config) : 
 
-# Training parameters : 
-lr = 0.001
-loss_function = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr)
-max_epochs = 1
-device = "cpu"
-percentage = 0.1
-seed_value=42
+    # Get the original working directory
+    original_wd = hydra.utils.get_original_cwd()
 
-#Change labels of x% of the images from 1 to 0
-processed_tensor= torch.load("data/processed/processed_tensor.pt")
-train_data_loader = processed_tensor["train_loader"]
+    # Change back to the original working directory
+    os.chdir(original_wd)
+    data_path = config["data_path"]
+    train_loader = torch.load(data_path)["train_loader"]
+    test_loader = torch.load(data_path)["test_loader"]
 
-for epoch in range(max_epochs):
-    model.train()
-    epoch_loss = 0
-    step = 0 
-    epoch_loss_values = []
-    for batch_data in train_data_loader:
-        step += 1 
-        inputs, labels = batch_data[0].to(device), batch_data[1].to(device)
 
-        #change a percentage of labels from 1 to 0
-        labels = change_labels (labels, percentage, seed_value)
-            
-        optimizer.zero_grad()
-        outputs = model(inputs)
-        loss = loss_function(outputs, labels)
-        loss.backward()
-        optimizer.step()
-        epoch_loss += loss.item()
-        print("epoch_loss from step {} is {}".format(step, loss.item()))
-        print("Accuracy {}".format(calculate_accuracy(outputs,labels)))
-    epoch_loss /= step
-    epoch_loss_values.append(epoch_loss)
-    print(f"epoch {epoch + 1} average loss: {epoch_loss:.4f}")
-torch.save(model.state_dict(), 'models/first_trial.pth')
+    # Model Definition : 
+
+    model = densenet121(spatial_dims=2, in_channels=1, out_channels=2).to("cpu")
+
+    # Training parameters : 
+
+    lr = float(config["learning_rate"])
+    training_name = config["training_name"]
+    loss_function =  instantiate(config["loss_function"])
+    optimizer = instantiate(config["optimizer"], model.parameters(), lr = lr)
+    num_epochs = int(config["epochs"])
+    percentage = 0.1
+    seed_value=42
+
+
+    loss_list = []
+    train_accuracy = []
+    test_accuracy = []
+
+    for epoch in range(num_epochs):
+        model.train()
+        running_loss = 0.0
+        running_acc = 0.0
+
+        for inputs, labels in train_loader:
+            optimizer.zero_grad()  # Zero the gradients
+            outputs = model(inputs)  # Forward pass
+            # change a percentage of labels from 1 to 0
+            labels = change_labels(labels, percentage, seed_value)
+            loss = loss_function(outputs, labels)  # Compute the loss
+            loss.backward()  # Backward pass
+            optimizer.step()  # Update the weights
+            train_acc = calculate_accuracy(outputs, labels)
+            running_loss += loss.item()
+            running_acc += train_acc
+
+        average_loss = running_loss / len(train_loader)
+        average_accuracy = running_acc / len(train_loader)
+
+        loss_list.append(average_loss)
+        train_accuracy.append(average_accuracy)
+        running_test_acc = 0.0
+        for inputs, labels in test_loader:
+            preds = model(inputs)
+            test_acc = calculate_accuracy(preds, labels)
+            running_test_acc += test_acc
+        average_test_accuracy = running_test_acc / len(test_loader)
+        test_accuracy.append(average_test_accuracy)
+        log.info(f"Epoch {epoch + 1}/{num_epochs}, Loss: {average_loss:.4f}, Train Accuracy : {average_accuracy:.4f}, Test Accuracy : {average_test_accuracy:.4f}")
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(train_accuracy, label='Train Accuracy', color='darkblue')
+    plt.plot(test_accuracy, label='Test Accuracy', color='darkgreen')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.legend()
+    plt.title(f'Train and Test Accuracy')
+    if not os.path.exists(f"reports/figures/{training_name}"):
+        os.makedirs(f"reports/figures/{training_name}")
+    plt.savefig(f"reports/figures/{training_name}/accuracy.png")
+    plt.close()
+    plt.plot(loss_list,color = "darkblue")
+    plt.xlabel("Epochs")
+    plt.ylabel("Training Loss")
+    if not os.path.isdir("reports/figures/{}".format(training_name)):
+        os.system("mkdir reports/figures/{}".format(training_name))
+    plt.savefig("reports/figures/{}/training.png".format(training_name))
+    plt.close()
+    if not os.path.isdir("models/{}".format(training_name)):
+        os.system("mkdir models/{}".format(training_name))
+    torch.save(model.state_dict(), "models/{}/checkpoint.pth".format(training_name))
+
+if __name__ == "__main__":
+    train()
+
