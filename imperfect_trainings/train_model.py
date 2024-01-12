@@ -9,8 +9,6 @@ from hydra.utils import instantiate
 import random
 import copy
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-
 def change_labels (labels, percentage, random_seed):
     new_labels=labels
     random.seed(random_seed)
@@ -42,7 +40,6 @@ def calculate_accuracy(logits, targets):
   
 log = logging.getLogger(__name__)
 
-
 @hydra.main(config_name="config_train.yaml")
 def train(config) : 
 
@@ -67,8 +64,8 @@ def train(config) :
     loss_function =  instantiate(config["loss_function"])
     optimizer = instantiate(config["optimizer"], model.parameters(), lr = lr)
     num_epochs = int(config["epochs"])
-    percentage = 0.1
-    seed_value=42
+    percentage = float(config["percentage"])
+    seed_value= int(config["seed_value"])
 
 
     loss_list = []
