@@ -20,14 +20,13 @@ if __name__ == '__main__':
     # Obtaining the tensors from the images : 
 
     transform_normalize = transforms.Normalize(mean = 1, std = 1)
-    transform_resize = transforms.Resize(size=(256,256), antialias = True)
+    transform_resize = transforms.Resize(size=(90, 90), antialias = True)
     for image in data_files : 
         tensor_image = transform_resize(transform_normalize(read_image(data_folder + image, mode = ImageReadMode.GRAY ).type(torch.float32)))
         images.append(tensor_image)
         id = int(image.replace(".png", "").replace("00", ""))
         target = target_csv[target_csv["id"] == id]["hemorrhage"].item()
         targets.append(torch.tensor([target]))
-    
     
     images, targets = torch.concatenate(images), torch.concatenate(targets)
 
@@ -44,7 +43,7 @@ if __name__ == '__main__':
 
     # Specify batch size for DataLoader
 
-    batch_size = 64
+    batch_size = 32
 
     # Create a DataLoader for train set
 
