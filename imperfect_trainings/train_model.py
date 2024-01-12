@@ -7,7 +7,9 @@ import os
 import matplotlib.pyplot as plt 
 from hydra.utils import instantiate
 import random
-import copy
+import wandb
+import numpy as np
+
 
 def change_labels (labels, percentage, random_seed):
     new_labels=labels
@@ -43,6 +45,8 @@ log = logging.getLogger(__name__)
 @hydra.main(config_name="config_train.yaml")
 def train(config) : 
 
+    wandb.init(name = config["training_name"])
+
     # Get the original working directory
     original_wd = hydra.utils.get_original_cwd()
 
@@ -56,6 +60,10 @@ def train(config) :
     # Model Definition : 
 
     model = densenet121(spatial_dims=2, in_channels=1, out_channels=2).to("cpu")
+
+    # Tracking the model with wandb : 
+
+    wandb.watch(model, log_freq=100)
 
     # Training parameters : 
 
@@ -102,10 +110,22 @@ def train(config) :
         average_test_accuracy = running_test_acc / len(test_loader)
         test_accuracy.append(average_test_accuracy)
         log.info(f"Epoch {epoch + 1}/{num_epochs}, Loss: {average_loss:.4f}, Train Accuracy : {average_accuracy:.4f}, Test Accuracy : {average_test_accuracy:.4f}")
-    
+        wandb.log({"loss" : average_loss, "accuracy_train" : average_accuracy, "accuracy_test" :average_test_accuracy})
+
+    columns = ["image", "prediction", "truth"]
+    predictions_table = wandb.Table(columns = columns)
+    for inputs, labels in test_loader:
+            logits = model(inputs)
+            preds = torch.argmax(logits, dim=1)
+            for i in range(len(inputs)) : 
+                predictions_table.add_data(wandb.Image(inputs[i]), int(preds[i].numpy()), int(labels[i].numpy()))
+
+
+    wandb.log({"Table" : predictions_table})
+
     plt.figure(figsize=(10, 5))
-    plt.plot(train_accuracy, label='Train Accuracy', color='darkblue')
-    plt.plot(test_accuracy, label='Test Accuracy', color='darkgreen')
+    plt.plot(range(1,num_epochs+1), train_accuracy, label='Train Accuracy', color='darkblue')
+    plt.plot(range(1,num_epochs+1), test_accuracy,  label='Test Accuracy', color='darkgreen')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
     plt.legend()
@@ -114,7 +134,7 @@ def train(config) :
         os.makedirs(f"reports/figures/{training_name}")
     plt.savefig(f"reports/figures/{training_name}/accuracy.png")
     plt.close()
-    plt.plot(loss_list,color = "darkblue")
+    plt.plot(range(1,num_epochs+1), loss_list, color = "darkblue")
     plt.xlabel("Epochs")
     plt.ylabel("Training Loss")
     if not os.path.isdir("reports/figures/{}".format(training_name)):
