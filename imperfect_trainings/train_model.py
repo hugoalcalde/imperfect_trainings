@@ -6,9 +6,28 @@ import hydra
 import os 
 import matplotlib.pyplot as plt 
 from hydra.utils import instantiate
+import random
+import copy
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
+def change_labels (labels, percentage, random_seed):
+    new_labels=labels
+    random.seed(random_seed)
+    num_images=len(labels)
+    x = int(percentage * num_images) # Number of images to change
+    one_indices=[]
+    for index, label in enumerate(labels):
+        if label==1:
+            one_indices.append(index) #indices where the labels=1
+    indices_to_change = random.sample(one_indices, x) 
+    new_labels[indices_to_change] = 0 
+    return new_labels
+
 
 
 def calculate_accuracy(logits, targets):
+    """Calculate the accuracy"""
     # Get predicted class indices
     predicted_indices = torch.argmax(logits, dim=1)
     
@@ -19,8 +38,8 @@ def calculate_accuracy(logits, targets):
     accuracy = correct_predictions / targets.size(0)
     
     return accuracy
-
-
+  
+  
 log = logging.getLogger(__name__)
 
 
@@ -48,7 +67,8 @@ def train(config) :
     loss_function =  instantiate(config["loss_function"])
     optimizer = instantiate(config["optimizer"], model.parameters(), lr = lr)
     num_epochs = int(config["epochs"])
-
+    percentage = 0.1
+    seed_value=42
 
 
     loss_list = []
@@ -63,6 +83,8 @@ def train(config) :
         for inputs, labels in train_loader:
             optimizer.zero_grad()  # Zero the gradients
             outputs = model(inputs)  # Forward pass
+            # change a percentage of labels from 1 to 0
+            labels = change_labels(labels, percentage, seed_value)
             loss = loss_function(outputs, labels)  # Compute the loss
             loss.backward()  # Backward pass
             optimizer.step()  # Update the weights
@@ -108,3 +130,4 @@ def train(config) :
 
 if __name__ == "__main__":
     train()
+
