@@ -10,7 +10,7 @@ COPY pyproject.toml pyproject.toml
 COPY imperfect_trainings/ imperfect_trainings/
 COPY datatest/ datatest/
 
-WORKDIR /firsttraining
+WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
