@@ -8,7 +8,7 @@ RUN apt update && \
 COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
 COPY imperfect_trainings/ imperfect_trainings/
-COPY data/ data/
+COPY datatest/ datatest/
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
