@@ -1,0 +1,5 @@
+steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['build','-f', 'dockerfiles/train_model.dockerfile' ,'-t', 'gcr.io/imperfect-training /firstimage', '.']
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['push', 'gcr.io/imperfect-training /firstimage']
