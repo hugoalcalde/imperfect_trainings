@@ -26,6 +26,7 @@ WORKDIR /app
 
 # Copy DVC files
 COPY .dvc/ /app/.dvc/
+COPY data.dvc /app/data.dvc/
 
 # Run DVC pull to fetch data
 RUN git init && \
