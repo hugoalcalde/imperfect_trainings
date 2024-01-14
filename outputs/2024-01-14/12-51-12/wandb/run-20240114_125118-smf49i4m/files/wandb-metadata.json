@@ -1,0 +1,45 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.9.5",
+    "heartbeatAt": "2024-01-14T11:51:19.513362",
+    "startedAt": "2024-01-14T11:51:18.263180",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\chris\\OneDrive - Danmarks Tekniske Universitet\\DTU\\Semester 3\\Machine Learning Operations\\Imperfect_Trainings\\imperfect_trainings\\train_model.py",
+    "codePathLocal": "..\\..\\..\\imperfect_trainings\\train_model.py",
+    "codePath": "imperfect_trainings\\train_model.py",
+    "git": {
+        "remote": "https://github.com/hugoalcalde/Imperfect_Trainings.git",
+        "commit": "addad86cafac9ae0111f727b78281b18db15f9ed"
+    },
+    "email": "christof.haye@gmail.com",
+    "root": "C:/Users/chris/OneDrive - Danmarks Tekniske Universitet/DTU/Semester 3/Machine Learning Operations/Imperfect_Trainings",
+    "host": "LAPTOP-9O0UDD7Q",
+    "username": "chris",
+    "executable": "C:\\Users\\chris\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1792.0,
+        "min": 0.0,
+        "max": 1992.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1792.0,
+            "min": 0.0,
+            "max": 1992.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 237.22753524780273,
+            "used": 221.1720962524414
+        }
+    },
+    "memory": {
+        "total": 7.853755950927734
+    }
+}
