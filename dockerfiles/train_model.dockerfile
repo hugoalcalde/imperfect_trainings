@@ -7,7 +7,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
+# Copy the service account key file
+COPY imperfect-training-a827b028141a.json /root/imperfect-training-a827b028141a.json
 
 # Set up Google Cloud SDK and authenticate
 RUN curl -sSL https://sdk.cloud.google.com | bash
