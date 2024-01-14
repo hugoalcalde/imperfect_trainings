@@ -2,14 +2,34 @@
 FROM python:3.11-slim
 
 RUN apt update && \
-    apt install --no-install-recommends -y build-essential gcc && \
+    apt install --no-install-recommends -y build-essential git curl gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
+COPY imperfect-training-a827b028141a.json /root/imperfect-training-a827b028141a.json
 COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
 COPY imperfect_trainings/ imperfect_trainings/
 COPY dataset/ dataset/
 COPY models/ models/
+
+# Set up Google Cloud SDK and authenticate
+RUN curl -sSL https://sdk.cloud.google.com | bash
+ENV PATH $PATH:/root/google-cloud-sdk/bin
+RUN gcloud auth activate-service-account --key-file=/root/imperfect-training-a827b028141a.json
+
+# Install DVC
+RUN pip install dvc
+RUN pip install dvc[gs]
+
+
+# Copy DVC files
+COPY .dvc/ .dvc/
+
+
+# Run DVC pull to fetch data
+
+RUN git init && \
+    dvc pull
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
