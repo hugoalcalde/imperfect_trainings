@@ -21,9 +21,10 @@ RUN gcloud auth activate-service-account --key-file=/root/imperfect-training-a82
 RUN pip install dvc
 RUN pip install dvc[gs]
 
+WORKDIR /app
 
 # Copy DVC files
-COPY .dvc/ .dvc/
+COPY .dvc/ /app/.dvc/
 
 
 # Run DVC pull to fetch data
