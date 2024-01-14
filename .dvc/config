@@ -1,4 +1,4 @@
 [core]
-    remote = storage
-['remote "storage"']
-    url = gdrive://1RQHK-AFEWbsUwYP2RLi-7AoKH3NFS6bR
+    remote = remote_storage
+['remote "remote_storage"']
+    url = gs://head_ct_hemorrhage/
