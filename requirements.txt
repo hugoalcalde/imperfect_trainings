@@ -5,4 +5,4 @@ monai_weekly==1.4.dev2401
 pandas==2.1.4
 torch==2.1.2
 torchvision==0.16.2
-wandb =0.16.1
+wandb ==0.16.1
