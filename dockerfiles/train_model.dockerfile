@@ -14,4 +14,4 @@ WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
-ENTRYPOINT ["python3", "-u", "imperfect_trainings/train_model.py"]
+ENTRYPOINT ["python", "-u", "imperfect_trainings/train_model.py"]
