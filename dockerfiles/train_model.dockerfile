@@ -3,7 +3,7 @@ FROM python:3.11-slim
 
 # Install DVC dependencies
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -21,12 +21,13 @@ RUN gcloud auth activate-service-account --key-file=/root/imperfect-training-a82
 RUN pip install dvc
 RUN pip install dvc[gs]
 
-# Set working directory
-WORKDIR /
+# Set working directory to a directory inside a Git repository
+WORKDIR /app
 
 # Copy DVC files
-COPY .dvc/ .dvc/
+COPY .dvc/ /app/.dvc/
 
 # Run DVC pull to fetch data
-RUN dvc pull
+RUN git init && \
+    dvc pull
 
