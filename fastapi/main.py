@@ -33,11 +33,6 @@ def classify_image(image_data):
     softmax = Softmax()
     logits = softmax(model(image.to(device)))
     return "Probablity of Hemorrhage {}".format(logits.detach().numpy()[0][1])
-    predicted_indices = torch.argmax(logits, dim=1)
-    if predicted_indices == 1:
-        return "Hemorrhage"
-    else:
-        return "Normal"
 
 @app.post("/model/")
 async def cv_model(data: UploadFile = File(...)):
