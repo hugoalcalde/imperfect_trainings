@@ -14,7 +14,7 @@ RUN pip install dvc
 RUN pip install dvc[gs]
 # Set up Google Cloud SDK and authenticate
 RUN apt-get update && \
-    apt-get install && \
+    apt-get install -y curl && \
     curl -sSL https://sdk.cloud.google.com | bash &&\
     gcloud auth activate-service-account --key-file=imperfect-training-a827b028141a.json && \
     apt-get clean && \
