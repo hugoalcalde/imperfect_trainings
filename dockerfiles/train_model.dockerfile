@@ -30,4 +30,4 @@ COPY .dvc/ /app/.dvc/
 # Run DVC pull to fetch data
 RUN git init && \
     dvc pull
-
+CMD ["tail", "-f", "/dev/null"]
