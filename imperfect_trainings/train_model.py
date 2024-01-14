@@ -10,6 +10,7 @@ import random
 import wandb
 import numpy as np
 
+wandb.login(key="03e44ad59c7a6a5997133501c2378368a437c661")
 
 def change_labels (labels, percentage, random_seed):
     new_labels=labels
