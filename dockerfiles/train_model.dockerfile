@@ -24,13 +24,13 @@ RUN pip install dvc[gs]
 WORKDIR /app
 
 # Copy DVC files
-COPY .dvc/ /app/.dvc/
-COPY data.dvc /app/data.dvc
+#COPY .dvc/ /app/.dvc/
+#COPY data.dvc /app/data.dvc
 
 # Run DVC pull to fetch data
-
-RUN git init && \
-    dvc pull
+RUN git clone -b clouddvcintegration https://github.com/hugoalcalde/imperfect_trainings.git
+WORKDIR /app/imperfect_trainings
+RUN dvc pull
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
