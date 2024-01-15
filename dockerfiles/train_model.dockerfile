@@ -29,8 +29,8 @@ WORKDIR /app
 #COPY data.dvc /app/data.dvc
 
 # Run DVC pull to fetch data
-RUN git clone -b clouddvcintegration https://github.com/hugoalcalde/imperfect_trainings.git
+RUN git clone -b dvcintegration https://github.com/hugoalcalde/imperfect_trainings.git
 WORKDIR /app/imperfect_trainings
-RUN dvc pull
+#RUN dvc pull
 
 CMD ["tail", "-f", "/dev/null"]
