@@ -6,11 +6,11 @@ RUN apt update && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
 COPY imperfect-training-a827b028141a.json /root/imperfect-training-a827b028141a.json
-#COPY requirements.txt requirements.txt
-#COPY pyproject.toml pyproject.toml
-#COPY imperfect_trainings/ imperfect_trainings/
-#COPY dataset/ dataset/
-#COPY models/ models/
+COPY requirements.txt requirements.txt
+COPY pyproject.toml pyproject.toml
+COPY imperfect_trainings/ imperfect_trainings/
+COPY dataset/ dataset/
+COPY models/ models/
 
 # Set up Google Cloud SDK and authenticate
 RUN curl -sSL https://sdk.cloud.google.com | bash
