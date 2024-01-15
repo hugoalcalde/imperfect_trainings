@@ -31,6 +31,6 @@ WORKDIR /app
 # Run DVC pull to fetch data
 RUN git clone -b dvcimplementation https://github.com/hugoalcalde/imperfect_trainings.git
 WORKDIR /app/imperfect_trainings
-#RUN dvc pull
+RUN dvc pull
 
 CMD ["tail", "-f", "/dev/null"]
