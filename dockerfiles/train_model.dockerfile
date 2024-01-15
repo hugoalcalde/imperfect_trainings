@@ -6,11 +6,11 @@ RUN apt update && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
 COPY imperfect-training-a827b028141a.json /root/imperfect-training-a827b028141a.json
-COPY requirements.txt requirements.txt
-COPY pyproject.toml pyproject.toml
-COPY imperfect_trainings/ imperfect_trainings/
-COPY dataset/ dataset/
-COPY models/ models/
+#COPY requirements.txt requirements.txt
+#COPY pyproject.toml pyproject.toml
+#COPY imperfect_trainings/ imperfect_trainings/
+#COPY dataset/ dataset/
+#COPY models/ models/
 
 # Set up Google Cloud SDK and authenticate
 RUN curl -sSL https://sdk.cloud.google.com | bash
@@ -29,11 +29,11 @@ WORKDIR /app
 
 # Run DVC pull to fetch data
 RUN git clone -b clouddvcintegration https://github.com/hugoalcalde/imperfect_trainings.git
-WORKDIR /app/imperfect_trainings
-RUN dvc pull
+#WORKDIR /app/imperfect_trainings
+#RUN dvc pull
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
-
-ENTRYPOINT ["python", "-u", "imperfect_trainings/train_model.py"]
+CMD ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["python", "-u", "imperfect_trainings/train_model.py"]
