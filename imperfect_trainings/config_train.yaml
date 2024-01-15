@@ -5,6 +5,6 @@ optimizer :
   _target_: torch.optim.Adam
 epochs : 5
 training_name : wandb_test
-data_path : app/data/processed/processed_tensor.pt
+data_path : app/imperfect_trainings/data/processed/processed_tensor.pt
 percentage : 0.1
 seed_value : 42
