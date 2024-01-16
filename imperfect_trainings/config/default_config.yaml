@@ -1,2 +1,2 @@
 defaults:
-    - experiment: exp10
+    - experiment: baseline
