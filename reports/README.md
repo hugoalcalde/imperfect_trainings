@@ -355,7 +355,15 @@ To execute a specific experiment configuration, and replicate the experiment on 
 >
 > Answer:
 
---- question 16 fill here ---
+We tried using the build in debugger in VScode. However, since our code was not so extensive, all the membeers decided to just run the code and manually adressing errors when encountered.
+
+We performed profiling several times. We used snakeviz to visualize the results. Here are two screenshots of profiling output of an experiment with the baseline configuration, with just 5 epochs:
+
+![Alt text](figures/snakeviz1.png)
+
+![Alt text](figures/snakeviz2.png)
+
+We can see that the function that took the longest to run was the backward pass. It took a total of 512.3 sec and it was called 15 times, therefore it took 34.15 per pass. 
 
 ## Working in the cloud
 
