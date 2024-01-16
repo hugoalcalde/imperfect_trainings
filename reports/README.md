@@ -74,7 +74,7 @@ end of the project.
 
 * [x] Write unit tests related to the data part of your code
 * [x] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
+* [x] Calculate the coverage.
 * [x] Get some continuous integration running on the github repository
 * [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [x] Create a trigger workflow for automatically building your docker images
@@ -129,7 +129,7 @@ s222522, s222700, s222577
 >
 > Answer:
 
-For our project, we worked with the MONAI framework (https://github.com/Project-MONAI/tutorials/blob/main/2d_classification/monai_101.ipynb). It is a freely available collaborative framework built for accelerating research and clinical collaboration in Medical Imaging. We haven’t used MONAI for dataset download and data pre-processing. Instead, we used it to define a Densenet and to run the training. The functionality was imported like this: from monai.networks.nets import densenet121. This saved us a lot of time because we didn’t have to build up the Neural Network by ourselves. So, the model was created with only one line of code. Furthermore, the model implementation is coordinated with the training and thus prevents errors. 
+For our project, we worked with the MONAI framework (https://github.com/Project-MONAI/tutorials/blob/main/2d_classification/monai_101.ipynb). It is a freely available collaborative framework built for accelerating research and clinical collaboration in Medical Imaging. We haven’t used MONAI for dataset download nor data pre-processing. Instead, we used it to define a Densenet model architecture and to run the training. The functionality was imported like this: from monai.networks.nets import densenet121. This saved us a lot of time because we didn’t have to build up the Neural Network by ourselves. So, the model was created with only one line of code. Furthermore, the model implementation is coordinated with the training and thus prevents errors.
 
 ## Coding environment
 
@@ -163,7 +163,7 @@ We managed dependencies in our project using a Makefile. The Makefile defined va
 > *experiments.*
 > Answer:
 
-From the Cookiecutter template, we have filled out MAKEFILE, README.md, data, models, pyproject.toml, reports, requirements.txt, tests, as well as the source code for the project. Additionally, we inserted a folder called fastapi, to run the deployment. Furthermore, a folder with the docker files was added. The docker file was used to build a virtual machine that runs the training later on in the cloud. Furthermore, we included dvc for data handling and git for code handling. Therefore the folders .dvc and .github were included as well. On top of that also the output of the trained models for wandb was included. We didnÄt use for instance the notebooks folder because we didn't use any notebooks.  
+From the Cookiecutter template, we have filled out MAKEFILE, README.md, data, models, pyproject.toml, reports, requirements.txt, tests, as well as the source code for the project. Additionally, we inserted a folder called fastapi, to run the deployment. Furthermore, a folder with the docker files was added. The docker file was used to build a virtual machine that runs the training later on in the cloud. Furthermore, we included dvc for data handling and git for code handling. Therefore the folders .dvc and .github were included as well. On top of that also the output of the trained models for wandb was included. We didn't use for instance the notebooks folder because we didn't use any notebooks.
 
 ### Question 6
 
@@ -174,7 +174,9 @@ From the Cookiecutter template, we have filled out MAKEFILE, README.md, data, mo
 >
 > Answer:
 
-We haven’t used e.g. ruff. Nevertheless, we took care of documenting the steps. Furthermore, throught the cookie-cutter template we organised our general code in a structured way. It is benefical to have uniform formatting because it makes collaboration more efficient, simplifies code reviews, and reduces errors. In larger projects, adhering to these standards becomes crucial for a cohesive and scalable codebase. Consistent coding practices are really important to efficiently collaborate among team members. Otherwise reviewing and understanding the code of other people becomes an even bigger challenge. 
+We have added ruff's pre-commit hook to our .pre-commit-config.yaml file, this prevents the commit until the issues are resolved.
+
+Besides that, we took care of good coding practices and documenting the steps. Furthermore, throught the cookiecutter template we organised our general code in a structured way. It is benefical to have uniform formatting because it makes collaboration more efficient, simplifies code reviews, and reduces errors. In larger projects, adhering to these standards becomes crucial for a cohesive and scalable codebase. Consistent coding practices are really important to efficiently collaborate among team members. Otherwise reviewing and understanding the code of other people becomes an even bigger challenge.
 
 ## Version control
 
@@ -193,6 +195,8 @@ We haven’t used e.g. ruff. Nevertheless, we took care of documenting the steps
 >
 > Answer:
 
+In total we have implemented 2 tests. Primarly, we are testing the training data dimensions and the randomness of our experiments as these are the most critical parts of our project. With `test_data.py` we guarantee that the data splits correctly and with `test_seed` we examine every configuration file in order to check that the manual seed is always set to 42. This is a key aspect in our project, since we are randomnly altering image labels, we want to make sure that the experiments are reproducible and these images are the same when we train the model several times.
+
 --- question 7 fill here ---
 
 ### Question 8
@@ -209,6 +213,9 @@ We haven’t used e.g. ruff. Nevertheless, we took care of documenting the steps
 > Answer:
 
 --- question 8 fill here ---
+The total code coverage is 100%, although this does not a guarantee that our code is error free. Coverage is just a measure of how many lines of code are run when your tests are executed. We only implemented two tests, therefore, there may still be some corner case that is not covered by our tests and will result in a bug. Although, the coverage is currently perfect, tests should cover a more diverse range of scenarios.
+
+![Alt text](figures/coverage.png)
 
 ### Question 9
 
@@ -225,6 +232,13 @@ We haven’t used e.g. ruff. Nevertheless, we took care of documenting the steps
 
 --- question 9 fill here ---
 
+Branches and pull requests have played a pivotal role in improving the overall development and collaboration process of the project.
+
+The default branch in our project was `master`. Besides, each one of us created branches to work on specific features : `unitesting`, `train`, `dvcintegration`... each branch represents a separate line of development, allowing us to separate our changes from the main codebase. Then, when each collaborator completed their work in a branch, we iniate a pull request to propose merging the changes into the main branch.
+
+This system was usefull to work on simultaneously without interferring to others tasks. Also helped in resolving conflicts during the merging process back into the main branch.
+
+
 ### Question 10
 
 > **Did you use DVC for managing data in your project? If yes, then how did it improve your project to have version**
@@ -238,7 +252,7 @@ We haven’t used e.g. ruff. Nevertheless, we took care of documenting the steps
 >
 > Answer:
 
-We did make use of DVC in the following way: The folder data was ignored by gits version control. Instead, it was linked to dvc. Our central storage place is the bucket in google cloud. All the raw images and processed data is stored there. Therefore, the data didn't have to be uploaded to git. If a new team member would have entered the project, after cloning the project, the person simply has to run dvc pull to get all the necessary data for running the training. A big benefit is also that dvc can controlls which data was used to train the model at a specific time. Also using dvc, the results by running the training in the cloud can be easily stored in the google bucket.   
+We did make use of DVC in the following way: The folder data was ignored by gits version control. Instead, it was linked to dvc. Our central storage place is the bucket in google cloud. All the raw images and processed data is stored there. Therefore, the data didn't have to be uploaded to git. If a new team member would have entered the project, after cloning the project, the person simply has to run dvc pull to get all the necessary data for running the training. A big benefit is also that dvc can controlls which data was used to train the model at a specific time. Also using dvc, the results by running the training in the cloud can be easily stored in the google bucket.
 
 ### Question 11
 
@@ -255,6 +269,14 @@ We did make use of DVC in the following way: The folder data was ignored by gits
 > Answer:
 
 --- question 11 fill here ---
+
+Our continuous integration (CI) workflow involves the following key components:
+1.	Unittesting with Pytest: We run unittests using Pytest for two critical aspects, test_data and test_seed. These tests validae the dimensions of our datasets and ensure the reproducibility of our experiments by confirming the consistency of the manual seed.
+2.	Coverage Measurement: this provides insights into the proportion of code executed during testing, helping us identify what lines need to be debugged.
+3.	GitHub Actions Workflow: We have set up GitHub Actions workflow files within our repository to automate the testing process. This workflow ensures that tests are executed every time we push changes, maintaining a continuously validated code.
+We did no find neceesary to write branch protection rules to our repository, since we are only three collaborators and we have been in continuous contact with each other, this way the workflow was more agile and flexible to us.
+4.    Pre-Commit Hooks: we use pre-commit hooks to follow code standards and perform checks before each commit. These include hooks for handling trailing whitespace, fixing end-of-file issues, checking YAML syntax, and monitoring large file additions. Additionally, we added pre-commit hooks from the Ruff framework for formatting. We didn't use it pre-commit everytime, when it was necessary we deactivated it with `git commit -m <message> --no-verify`.
+
 
 ## Running code and tracking experiments
 
@@ -273,7 +295,7 @@ We did make use of DVC in the following way: The folder data was ignored by gits
 >
 > Answer:
 
-We configured experiments using hydra. Hydra was using different .yaml files, stored in the experiment folder.In these yaml files the necessary hyperparameters were stored, for instance the loss function or learning rate. In our experiment, we examined the effect of wrong-labeled images during training on the resulting quality of the output. Therefore we had different yaml files with different percentages. 
+We configured experiments using hydra. Hydra was using different .yaml files, stored in the experiment folder.In these yaml files the necessary hyperparameters were stored, for instance the loss function or learning rate. In our experiment, we examined the effect of wrong-labeled images during training on the resulting quality of the output. Therefore we had different yaml files with different percentages.
 
 ### Question 13
 
@@ -352,7 +374,7 @@ We configured experiments using hydra. Hydra was using different .yaml files, st
 >
 > Answer:
 
-We used the following two services: Bucket and Engine. Bucket is used to store our data that was used to train the model. Furthermore, we can also store the output/results of the training in the bucket. Additionally, we used the Engine to store our VM instances. In this instance we loaded the docker image to get a containerised application where we performed the training. 
+We used the following two services: Bucket and Engine. Bucket is used to store our data that was used to train the model. Furthermore, we can also store the output/results of the training in the bucket. Additionally, we used the Engine to store our VM instances. In this instance we loaded the docker image to get a containerised application where we performed the training.
 
 ### Question 18
 
