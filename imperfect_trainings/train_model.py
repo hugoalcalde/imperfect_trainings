@@ -42,7 +42,8 @@ def calculate_accuracy(logits, targets):
   
 log = logging.getLogger(__name__)
 
-@hydra.main(config_name="config_train.yaml")
+
+@hydra.main(config_path="config", config_name="default_config.yaml", version_base=None)
 def train(config) : 
 
     wandb.init(name = config["training_name"])
@@ -50,15 +51,17 @@ def train(config) :
     # Get the original working directory
     original_wd = hydra.utils.get_original_cwd()
 
+    hparams=config.experiment
+    print(hparams['data_path'])
+          
     # Change back to the original working directory
     os.chdir(original_wd)
-    data_path = config["data_path"]
+    data_path = hparams["data_path"]
     train_loader = torch.load(data_path)["train_loader"]
     test_loader = torch.load(data_path)["test_loader"]
 
 
     # Model Definition : 
-
     model = densenet121(spatial_dims=2, in_channels=1, out_channels=2).to("cpu")
 
     # Tracking the model with wandb : 
@@ -67,13 +70,13 @@ def train(config) :
 
     # Training parameters : 
 
-    lr = float(config["learning_rate"])
-    training_name = config["training_name"]
-    loss_function =  instantiate(config["loss_function"])
-    optimizer = instantiate(config["optimizer"], model.parameters(), lr = lr)
-    num_epochs = int(config["epochs"])
-    percentage = float(config["percentage"])
-    seed_value= int(config["seed_value"])
+    lr = float(hparams["learning_rate"])
+    training_name = hparams["training_name"]
+    loss_function =  instantiate(hparams["loss_function"])
+    optimizer = instantiate(hparams["optimizer"], model.parameters(), lr = lr)
+    num_epochs = int(hparams["epochs"])
+    percentage = float(hparams["percentage"])
+    seed_value= hparams["seed_value"]
 
 
     loss_list = []
