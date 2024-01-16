@@ -195,9 +195,8 @@ Besides that, we took care of good coding practices and documenting the steps. F
 >
 > Answer:
 
-In total we have implemented 2 tests. Primarly, we are testing the training data dimensions and the randomness of our experiments as these are the most critical parts of our project. With `test_data.py` we guarantee that the data splits correctly and with `test_seed` we examine every configuration file in order to check that the manual seed is always set to 42. This is a key aspect in our project, since we are randomnly altering image labels, we want to make sure that the experiments are reproducible and these images are the same when we train the model several times.
+In total we have implemented 2 tests. Primarly, we are testing the training data dimensions and the randomness of our experiments as these are the most critical parts of our project. With `test_data.py` we guarantee that the data splits correctly and with `test_seed.py` we examine every configuration file in order to check that the manual seed is always set to 42. This is a key aspect in our project, since we are randomnly altering image labels, we want to make sure that the experiments are reproducible and these images are the same when we train the model several times.
 
---- question 7 fill here ---
 
 ### Question 8
 
@@ -212,7 +211,6 @@ In total we have implemented 2 tests. Primarly, we are testing the training data
 >
 > Answer:
 
---- question 8 fill here ---
 The total code coverage is 100%, although this does not a guarantee that our code is error free. Coverage is just a measure of how many lines of code are run when your tests are executed. We only implemented two tests, therefore, there may still be some corner case that is not covered by our tests and will result in a bug. Although, the coverage is currently perfect, tests should cover a more diverse range of scenarios.
 
 ![Alt text](figures/coverage.png)
@@ -229,8 +227,6 @@ The total code coverage is 100%, although this does not a guarantee that our cod
 > *addition to the main branch. To merge code we ...*
 >
 > Answer:
-
---- question 9 fill here ---
 
 Branches and pull requests have played a pivotal role in improving the overall development and collaboration process of the project.
 
@@ -268,8 +264,6 @@ We did make use of DVC in the following way: The folder data was ignored by gits
 >
 > Answer:
 
---- question 11 fill here ---
-
 Our continuous integration (CI) workflow involves the following key components:
 1.	Unittesting with Pytest: We run unittests using Pytest for two critical aspects, test_data and test_seed. These tests validae the dimensions of our datasets and ensure the reproducibility of our experiments by confirming the consistency of the manual seed.
 2.	Coverage Measurement: this provides insights into the proportion of code executed during testing, helping us identify what lines need to be debugged.
@@ -295,7 +289,7 @@ We did no find neceesary to write branch protection rules to our repository, sin
 >
 > Answer:
 
-We configured experiments using hydra. Hydra was using different .yaml files, stored in the experiment folder.In these yaml files the necessary hyperparameters were stored, for instance the loss function or learning rate. In our experiment, we examined the effect of wrong-labeled images during training on the resulting quality of the output. Therefore we had different yaml files with different percentages.
+We configured experiments using hydra. Hydra was using different .yaml files, stored in the config/experiment folder. In these yaml files the necessary hyperparameters were stored, for instance the number of epochs or the learning rate. In our experiments, we examined the effect of wrong-labeled images during training on the resulting quality of the output. Therefore, we had different yaml files with different percentages of corrupted labels.
 
 ### Question 13
 
@@ -310,7 +304,11 @@ We configured experiments using hydra. Hydra was using different .yaml files, st
 >
 > Answer:
 
---- question 13 fill here ---
+As stated in the previous question, we made use of configuration files. In every configurations file, the parameters for each experiment are setup. There is one file called `baseline.yaml` which was used to create the baseline experiment in which no label is corrupted. Therefore, the other files namely `exp10`, `exp20`, `exp30`, correspond to experiments with 10%, 20%, and 30% label corruption, respectively.
+
+To ensure consistent results across runs, we set the seed to 42. Furthermore, our unittest, test_seed, validates that the seed is consistently set to 42 and not any other value.
+
+To execute a specific experiment configuration, and replicate the experiment on would have to do: `python train_model.py experiment=exp20` (to change 20% of the image labels).
 
 ### Question 14
 
