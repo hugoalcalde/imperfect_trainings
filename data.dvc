@@ -5,54 +5,122 @@ outs:
   - relpath: 10-16-53/.hydra/config.yaml
     md5: 3ebe44474332697eb9396be0f5589735
     size: 236
+    cloud:
+      remote_storage:
+        etag: 08f2e085aae9e183031001
+        version_id: '1705405168316530'
   - relpath: 10-16-53/.hydra/hydra.yaml
     md5: 2197348d1df9be428c7b9679881b6f61
     size: 3733
+    cloud:
+      remote_storage:
+        etag: 08969a87aae9e183031001
+        version_id: '1705405168340246'
   - relpath: 10-16-53/.hydra/overrides.yaml
     md5: 35d0e0b801444bb1f4c2115720f8e4f6
     size: 4
+    cloud:
+      remote_storage:
+        etag: 0888d485aae9e183031001
+        version_id: '1705405168314888'
   - relpath: 10-16-53/train_model.log
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      remote_storage:
+        etag: 08e09f84aae9e183031001
+        version_id: '1705405168291808'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/files/config.yaml
     md5: 5abf869fc649b65ba892eb3e36037f0a
     size: 558
+    cloud:
+      remote_storage:
+        etag: 08b28c85aae9e183031001
+        version_id: '1705405168305714'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/files/output.log
     md5: b3fb3a40267d95e439f3c81947f04ad2
     size: 999
+    cloud:
+      remote_storage:
+        etag: 08fad180aae9e183031001
+        version_id: '1705405168232698'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/files/requirements.txt
     md5: 1e9ce6b7aad56aadead851e66a6548ba
     size: 5425
+    cloud:
+      remote_storage:
+        etag: 089be888aae9e183031001
+        version_id: '1705405168366619'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/files/wandb-metadata.json
     md5: 7ef4970cc7fb815bb63948d47ea84fb5
     size: 1534
+    cloud:
+      remote_storage:
+        etag: 08ae8183aae9e183031001
+        version_id: '1705405168271534'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/files/wandb-summary.json
     md5: 6a022f72ed21a8933171ba0913596cd9
     size: 26
+    cloud:
+      remote_storage:
+        etag: 08c6c886aae9e183031001
+        version_id: '1705405168329798'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/logs/debug-internal.log
     md5: 208907a650bfd75b7cfcda721969bdde
     size: 24954
+    cloud:
+      remote_storage:
+        etag: 08ba8092aae9e183031001
+        version_id: '1705405168517178'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/logs/debug.log
     md5: c22bbd5c0dd45cc0e79ec556a5af6645
     size: 4014
+    cloud:
+      remote_storage:
+        etag: 0895998caae9e183031001
+        version_id: '1705405168422037'
   - relpath: 10-16-53/wandb/run-20240114_101659-g6guoxfg/run-g6guoxfg.wandb
     md5: 1eb919948c351a5b12e85fed15a74c20
     size: 3494
+    cloud:
+      remote_storage:
+        etag: 08f48e83aae9e183031001
+        version_id: '1705405168273268'
   - relpath: models/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      remote_storage:
+        etag: 08d8c6eaa9e9e183031001
+        version_id: '1705405167870808'
   - relpath: models/wandb_test/checkpoint.pth
     md5: 564b1d0dea5079712ff2e64aa732b56e
     size: 28406357
+    cloud:
+      remote_storage:
+        etag: 089abda4b9e9e183031001
+        version_id: '1705405200277146'
   - relpath: processed/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      remote_storage:
+        etag: 0880bf8baae9e183031001
+        version_id: '1705405168410496'
   - relpath: processed/processed_tensor.pt
     md5: ea1916fdc6e1fb515d027e15c4c57971
     size: 52433358
+    cloud:
+      remote_storage:
+        etag: 08baf7b4c0e9e183031001
+        version_id: '1705405215226810'
   - relpath: raw/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      remote_storage:
+        etag: 08e5bbfaa9e9e183031001
+        version_id: '1705405168131557'
   - relpath: raw/head_ct/000.png
     md5: 0037ce121f2d8d60d295e5c0fcb977c0
     size: 371298
