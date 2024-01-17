@@ -15,13 +15,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-
-    - uses: iterative/setup-dvc@v1
-    - name: Get data
-      run: dvc pull
-      env:
-        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
-
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -43,6 +36,12 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/*.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
+
+    - name: Get data
+      uses: iterative/setup-dvc@v1
+      run: dvc pull
+      env:
+        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
 
     - name: Test with pytest
       run: |
