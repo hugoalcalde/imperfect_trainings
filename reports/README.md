@@ -363,7 +363,7 @@ We performed profiling several times. We used snakeviz to visualize the results.
 
 ![Alt text](figures/snakeviz2.png)
 
-We can see that the function that took the longest to run was the backward pass. It took a total of 512.3 sec and it was called 15 times, therefore it took 34.15 per pass. 
+We can see that the function that took the longest to run was the backward pass. It took a total of 512.3 sec and it was called 15 times, therefore it took 34.15 per pass.
 
 ## Working in the cloud
 
