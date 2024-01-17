@@ -14,8 +14,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      uses: iterative/setup-dvc@v1
 
+
+    - uses: iterative/setup-dvc@v1
     - name: Get data
       run: dvc pull
       env:
@@ -47,5 +48,3 @@ jobs:
       run: |
         pip install pytest
         pytest -v
-
-
