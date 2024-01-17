@@ -1,12 +1,15 @@
 #from tests import _PATH_DATA
 import torch
+import pytest
+import os
 
-#@pytest.mark.skipif(not os.path.exists(file_path), reason="Data files not found")
+#@pytest.mark.skipif(not os.path.exists(processed_tensor), reason="Data files not found")
 
 def test_sets_dimmensions():
-    _PATH_DATA = "data/processed/"
+    _PATH_DATA = "Imperfect_Trainings/data/processed/"
     processed_tensor = torch.load(_PATH_DATA + "processed_tensor.pt")
 
+    
     train_dataloader = len(processed_tensor["train_loader"].dataset)
     test_dataloader = len(processed_tensor["test_loader"].dataset)
 
