@@ -404,7 +404,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
---- question 19 fill here ---
+[this figure](figures/bucket_project.png)
 
 ### Question 20
 
@@ -413,7 +413,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
-reports/figures/Container_registry_project.png 
+[this figure](figures/Container_registry_project.png).
 
 ### Question 21
 
@@ -422,7 +422,7 @@ reports/figures/Container_registry_project.png
 >
 > Answer:
 
---- question 21 fill here ---
+[this figure](figures/cloud_build_project.png)
 
 ### Question 22
 
