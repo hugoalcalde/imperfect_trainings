@@ -1,0 +1,10 @@
+learning_rate: 0.01
+loss_function:
+  _target_: torch.nn.CrossEntropyLoss
+optimizer:
+  _target_: torch.optim.Adam
+epochs: 5
+training_name: wandbtest
+data_path: data/processed/processed_tensor.pt
+percentage: 0.1
+seed_value: 42
