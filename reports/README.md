@@ -395,7 +395,7 @@ We used the following two services: Bucket and Engine. Bucket is used to store o
 >
 > Answer:
 
-We used the compute engine to run our training in the cloud. We used a instance with the following hardware: The machine type was e2-custom-8-16896, without a GPU. Furthermore, we used a boot disk with 50 GB. We used the service to train our model. First we created a docker image based on the dockerfile in git. FOllowing, we created a VM with a container image with the latest version of the image. The images are stored in the container registry. The docker image was pulled into the VM and finally executed. We also installed git in the image, to update our code on an ongoing base. 
+We used the compute engine to run our training in the cloud. We used a instance with the following hardware: The machine type was e2-custom-8-16896, without a GPU. Furthermore, we used a boot disk with 50 GB. We used the service to train our model. First we created a docker image based on the dockerfile in git. FOllowing, we created a VM with a container image with the latest version of the image. The images are stored in the container registry. The docker image was pulled into the VM and finally executed. We also installed git in the image, to update our code on an ongoing base.
 
 ### Question 19
 
@@ -467,8 +467,8 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
-Mainly one group member was responsible for the cloud setup so the majority of the costs are assigned to him. Somehow we spend a lot money on cloud storage, which were by far the highest costs 
-with around 30€. The compute engine were only a couple of euros. The Networking was the lowest with less then an Euro. 
+Mainly one group member was responsible for the cloud setup so the majority of the costs are assigned to him. Somehow we spend a lot money on cloud storage, which were by far the highest costs
+with around 30€. The compute engine were only a couple of euros. The Networking was the lowest with less then an Euro.
 
 ## Overall discussion of project
 
@@ -489,7 +489,9 @@ with around 30€. The compute engine were only a couple of euros. The Networkin
 >
 > Answer:
 
-The starting point of the diagram is our local setup, where we setup our code, which is version controlle by github. We integrated the third party package into the code to train our model. Once, this was working we included hydra for setting the hyperparameters, as well as setting up our experiment using yaml files. We also included weights and biases to efficiently track our training results. Once this was working, we created a dockercontainer and make it run in the container as well. This docker image was used to setup the virtual machine in the cloud. Thereby the image in the cloud was updated using a trigger flow. Nevertheless, we installed github in the docker to pull our progress in an ongoing basis. Therefore, we didn't have to use every single generated image. The code was tracked with github while the data tracking was outsourced to dvc. The central storage place of our data is the google bucket. Furthermore, some unit tests were created to make sure that the code is working after we commit new lines of code. This was done in github by setting up workflows. These workflows were triggered every time we commit something. In other words, we set up some continuous integration. We deployed the model using fastapi. 
+![my_image](figures/diagram.png)
+
+The starting point of the diagram is our local setup, where we setup our code, which is version controlle by github. We integrated the third party package into the code to train our model. Once, this was working we included hydra for setting the hyperparameters, as well as setting up our experiment using yaml files. We also included weights and biases to efficiently track our training results. Once this was working, we created a dockercontainer and make it run in the container as well. This docker image was used to setup the virtual machine in the cloud. Thereby the image in the cloud was updated using a trigger flow. Nevertheless, we installed github in the docker to pull our progress in an ongoing basis. Therefore, we didn't have to use every single generated image. The code was tracked with github while the data tracking was outsourced to dvc. The central storage place of our data is the google bucket. Furthermore, some unit tests were created to make sure that the code is working after we commit new lines of code. This was done in github by setting up workflows. These workflows were triggered every time we commit something. In other words, we set up some continuous integration. We deployed the model using FastAPI.
 
 ### Question 26
 
