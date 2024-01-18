@@ -502,8 +502,7 @@ The starting point of the diagram is our local setup, where we setup our code, w
 > *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
 >
 > Answer:
-
---- question 26 fill here ---
+It took a long time to setup the google cloud. It took a long time to set up the images. Therefore, the errors in the image building process did not pop up immidiately. Also it was not super straight forward how to pass the authentication option of the google cloud in the docker file. It was kind of a try and error, which took longer than normally because there was always some waiting time. Furthermore, it was not really straight forward to get an initial understand what exactly a docker container is in comparison to a VM. The logs helped during the process but it was often still not super cristal clear what in the end the pain point was. 
 
 ### Question 27
 
@@ -520,4 +519,5 @@ The starting point of the diagram is our local setup, where we setup our code, w
 >
 > Answer:
 
---- question 27 fill here ---
+Student s222577 was in charge of setting up the docker container for training our applications. Furthermore, the student was responsible for the big parts of the cloud setup of the project (container registry, VM, bucket etc.)
+Overall, all members contributed equially to the project.
