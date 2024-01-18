@@ -2,20 +2,15 @@ outs:
 - hash: md5
   path: data
   files:
-  - relpath: .gitkeep
+  - relpath: processed/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
-    cloud:
-      remote_storage:
-        etag: 0882afcbcedadc83031001
-        version_id: '1705229419730818'
   - relpath: processed/processed_tensor.pt
-    md5: a054a3cf3af71c3cc27e1655213daa0b
-    size: 6484558
-    cloud:
-      remote_storage:
-        etag: 0882b7fdd6dadc83031001
-        version_id: '1705229437328258'
+    md5: ea1916fdc6e1fb515d027e15c4c57971
+    size: 52433358
+  - relpath: raw/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
   - relpath: raw/head_ct/000.png
     md5: 0037ce121f2d8d60d295e5c0fcb977c0
     size: 371298
