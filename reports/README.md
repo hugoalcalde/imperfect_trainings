@@ -50,36 +50,36 @@ end of the project.
 
 ### Week 1
 
-* [ ] Create a git repository
-* [ ] Make sure that all team members have write access to the github repository
-* [ ] Create a dedicated environment for you project to keep track of your packages
-* [ ] Create the initial file structure using cookiecutter
-* [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
-* [ ] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
-* [ ] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
-* [ ] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the github repository
+* [x] Create a dedicated environment for you project to keep track of your packages
+* [x] Create the initial file structure using cookiecutter
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Add a model file and a training script and get that running
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to comply with good coding practices (`pep8`) while doing the project
+* [x] Do a bit of code typing and remember to document essential parts of your code
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
 * [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
-* [ ] Get some continuous integration running on the github repository
-* [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
-* [ ] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
+* [x] Get some continuous integration running on the github repository
+* [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [x] Create a trigger workflow for automatically building your docker images
+* [x] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
 * [ ] Deploy your model in GCP using either Functions or Run as the backend
 
@@ -95,7 +95,7 @@ end of the project.
 ### Additional
 
 * [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
+* [x] Make sure all group members have a understanding about all parts of the project
 * [ ] Uploaded all your code to github
 
 ## Group information
@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
---- question 1 fill here ---
+Group 32
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+s222522, s222700, s222577
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -129,7 +129,7 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+For our project, we worked with the MONAI framework (https://github.com/Project-MONAI/tutorials/blob/main/2d_classification/monai_101.ipynb). It is a freely available collaborative framework built for accelerating research and clinical collaboration in Medical Imaging. We haven’t used MONAI for dataset download nor data pre-processing. Instead, we used it to define a Densenet model architecture and to run the training. The functionality was imported like this: from monai.networks.nets import densenet121. This saved us a lot of time because we didn’t have to build up the Neural Network by ourselves. So, the model was created with only one line of code. Furthermore, the model implementation is coordinated with the training and thus prevents errors.
 
 ## Coding environment
 
@@ -148,7 +148,7 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+We managed dependencies in our project using a Makefile. The Makefile defined various commands to create and manage the project environment. To set up the environment, a team member would run make create_environment, which utilized Conda to create a virtual environment with the specified Python version (3.11 in this case). The dependencies were listed in the requirements.txt file, and running make requirements installed all the necessary Python packages. To replicate our environment, a new team member would need to clone the project repository, create the environment, and install dependencies by running the specified Makefile commands. The provided Makefile ensures a streamlined process for setting up and managing the project environment.
 
 ### Question 5
 
@@ -163,7 +163,7 @@ end of the project.
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+From the Cookiecutter template, we have filled out MAKEFILE, README.md, data, models, pyproject.toml, reports, requirements.txt, tests, as well as the source code for the project. Additionally, we inserted a folder called fastapi, to run the deployment. Furthermore, a folder with the docker files was added. The docker file was used to build a virtual machine that runs the training later on in the cloud. Furthermore, we included dvc for data handling and git for code handling. Therefore the folders .dvc and .github were included as well. On top of that also the output of the trained models for wandb was included. We didn't use for instance the notebooks folder because we didn't use any notebooks.
 
 ### Question 6
 
@@ -174,7 +174,9 @@ end of the project.
 >
 > Answer:
 
---- question 6 fill here ---
+We have added ruff's pre-commit hook to our .pre-commit-config.yaml file, this prevents the commit until the issues are resolved.
+
+Besides that, we took care of good coding practices and documenting the steps. Furthermore, throught the cookiecutter template we organised our general code in a structured way. It is benefical to have uniform formatting because it makes collaboration more efficient, simplifies code reviews, and reduces errors. In larger projects, adhering to these standards becomes crucial for a cohesive and scalable codebase. Consistent coding practices are really important to efficiently collaborate among team members. Otherwise reviewing and understanding the code of other people becomes an even bigger challenge.
 
 ## Version control
 
@@ -193,7 +195,8 @@ end of the project.
 >
 > Answer:
 
---- question 7 fill here ---
+In total we have implemented 2 tests. Primarly, we are testing the training data dimensions and the randomness of our experiments as these are the most critical parts of our project. With `test_data.py` we guarantee that the data splits correctly and with `test_seed.py` we examine every configuration file in order to check that the manual seed is always set to 42. This is a key aspect in our project, since we are randomnly altering image labels, we want to make sure that the experiments are reproducible and these images are the same when we train the model several times.
+
 
 ### Question 8
 
@@ -208,7 +211,9 @@ end of the project.
 >
 > Answer:
 
---- question 8 fill here ---
+The total code coverage is 100%, although this does not a guarantee that our code is error free. Coverage is just a measure of how many lines of code are run when your tests are executed. We only implemented two tests, therefore, there may still be some corner case that is not covered by our tests and will result in a bug. Although, the coverage is currently perfect, tests should cover a more diverse range of scenarios.
+
+![Alt text](figures/coverage.png)
 
 ### Question 9
 
@@ -223,7 +228,12 @@ end of the project.
 >
 > Answer:
 
---- question 9 fill here ---
+Branches and pull requests have played a pivotal role in improving the overall development and collaboration process of the project.
+
+The default branch in our project was `master`. Besides, each one of us created branches to work on specific features : `unitesting`, `train`, `dvcintegration`... each branch represents a separate line of development, allowing us to separate our changes from the main codebase. Then, when each collaborator completed their work in a branch, we iniate a pull request to propose merging the changes into the main branch.
+
+This system was usefull to work on simultaneously without interferring to others tasks. Also helped in resolving conflicts during the merging process back into the main branch.
+
 
 ### Question 10
 
@@ -238,7 +248,7 @@ end of the project.
 >
 > Answer:
 
---- question 10 fill here ---
+We did make use of DVC in the following way: The folder data was ignored by gits version control. Instead, it was linked to dvc. Our central storage place is the bucket in google cloud. All the raw images and processed data is stored there. Therefore, the data didn't have to be uploaded to git. If a new team member would have entered the project, after cloning the project, the person simply has to run dvc pull to get all the necessary data for running the training. A big benefit is also that dvc can controlls which data was used to train the model at a specific time. Also using dvc, the results by running the training in the cloud can be easily stored in the google bucket.
 
 ### Question 11
 
@@ -254,7 +264,13 @@ end of the project.
 >
 > Answer:
 
---- question 11 fill here ---
+Our continuous integration (CI) workflow involves the following key components:
+1.	Unittesting with Pytest: We run unittests using Pytest for two critical aspects, test_data and test_seed. These tests validae the dimensions of our datasets and ensure the reproducibility of our experiments by confirming the consistency of the manual seed.
+2.	Coverage Measurement: this provides insights into the proportion of code executed during testing, helping us identify what lines need to be debugged.
+3.	GitHub Actions Workflow: We have set up GitHub Actions workflow files within our repository to automate the testing process. This workflow ensures that tests are executed every time we push changes, maintaining a continuously validated code.
+We did no find neceesary to write branch protection rules to our repository, since we are only three collaborators and we have been in continuous contact with each other, this way the workflow was more agile and flexible to us.
+4.    Pre-Commit Hooks: we use pre-commit hooks to follow code standards and perform checks before each commit. These include hooks for handling trailing whitespace, fixing end-of-file issues, checking YAML syntax, and monitoring large file additions. Additionally, we added pre-commit hooks from the Ruff framework for formatting. We didn't use it pre-commit everytime, when it was necessary we deactivated it with `git commit -m <message> --no-verify`.
+
 
 ## Running code and tracking experiments
 
@@ -273,7 +289,7 @@ end of the project.
 >
 > Answer:
 
---- question 12 fill here ---
+We configured experiments using hydra. Hydra was using different .yaml files, stored in the config/experiment folder. In these yaml files the necessary hyperparameters were stored, for instance the number of epochs or the learning rate. In our experiments, we examined the effect of wrong-labeled images during training on the resulting quality of the output. Therefore, we had different yaml files with different percentages of corrupted labels.
 
 ### Question 13
 
@@ -288,7 +304,11 @@ end of the project.
 >
 > Answer:
 
---- question 13 fill here ---
+As stated in the previous question, we made use of configuration files. In every configurations file, the parameters for each experiment are setup. There is one file called `baseline.yaml` which was used to create the baseline experiment in which no label is corrupted. Therefore, the other files namely `exp10`, `exp20`, `exp30`, correspond to experiments with 10%, 20%, and 30% label corruption, respectively.
+
+To ensure consistent results across runs, we set the seed to 42. Furthermore, our unittest, test_seed, validates that the seed is consistently set to 42 and not any other value.
+
+To execute a specific experiment configuration, and replicate the experiment on would have to do: `python train_model.py experiment=exp20` (to change 20% of the image labels).
 
 ### Question 14
 
@@ -335,7 +355,15 @@ end of the project.
 >
 > Answer:
 
---- question 16 fill here ---
+We tried using the build in debugger in VScode. However, since our code was not so extensive, all the membeers decided to just run the code and manually adressing errors when encountered.
+
+We performed profiling several times. We used snakeviz to visualize the results. Here are two screenshots of profiling output of an experiment with the baseline configuration, with just 5 epochs:
+
+![Alt text](figures/snakeviz1.png)
+
+![Alt text](figures/snakeviz2.png)
+
+We can see that the function that took the longest to run was the backward pass. It took a total of 512.3 sec and it was called 15 times, therefore it took 34.15 per pass.
 
 ## Working in the cloud
 
@@ -352,7 +380,7 @@ end of the project.
 >
 > Answer:
 
---- question 17 fill here ---
+We used the following two services: Bucket and Engine. Bucket is used to store our data that was used to train the model. Furthermore, we can also store the output/results of the training in the bucket. Additionally, we used the Engine to store our VM instances. In this instance we loaded the docker image to get a containerised application where we performed the training.
 
 ### Question 18
 
@@ -367,7 +395,7 @@ end of the project.
 >
 > Answer:
 
---- question 18 fill here ---
+We used the compute engine to run our training in the cloud. We used instances with the following hardware
 
 ### Question 19
 
