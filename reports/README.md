@@ -413,7 +413,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
---- question 20 fill here ---
+reports/figures/Container_registry_project.png 
 
 ### Question 21
 
