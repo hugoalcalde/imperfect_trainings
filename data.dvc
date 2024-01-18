@@ -5,12 +5,24 @@ outs:
   - relpath: processed/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      storage:
+        etag: 08bfb7f4edd1e683031001
+        version_id: '1705570666879935'
   - relpath: processed/processed_tensor.pt
     md5: ea1916fdc6e1fb515d027e15c4c57971
     size: 52433358
+    cloud:
+      storage:
+        etag: 089599daffd1e683031001
+        version_id: '1705570704198805'
   - relpath: raw/.gitkeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      storage:
+        etag: 08f985d2edd1e683031001
+        version_id: '1705570666316537'
   - relpath: raw/head_ct/000.png
     md5: 0037ce121f2d8d60d295e5c0fcb977c0
     size: 371298

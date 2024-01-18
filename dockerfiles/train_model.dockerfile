@@ -5,17 +5,17 @@ RUN apt update && \
     apt install --no-install-recommends -y build-essential git curl gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
-COPY imperfect-training-a827b028141a.json /root/imperfect-training-a827b028141a.json
-COPY requirements.txt requirements.txt
-COPY pyproject.toml pyproject.toml
-COPY imperfect_trainings/ imperfect_trainings/
-COPY dataset/ dataset/
-COPY models/ models/
+COPY imperfect-training.json /root/imperfect-training.json
+#COPY requirements.txt requirements.txt
+#COPY pyproject.toml pyproject.toml
+#COPY imperfect_trainings/ imperfect_trainings/
+#COPY dataset/ dataset/
+#COPY models/ models/
 
 # Set up Google Cloud SDK and authenticate
 RUN curl -sSL https://sdk.cloud.google.com | bash
 ENV PATH $PATH:/root/google-cloud-sdk/bin
-RUN gcloud auth activate-service-account --key-file=/root/imperfect-training-a827b028141a.json
+RUN gcloud auth activate-service-account --key-file=/root/imperfect-training.json
 
 # Install DVC
 RUN pip install dvc
@@ -32,7 +32,7 @@ RUN git clone -b clouddvcintegration https://github.com/hugoalcalde/imperfect_tr
 #WORKDIR /app/imperfect_trainings
 #RUN dvc pull
 
-WORKDIR /
+WORKDIR /app/imperfect_trainings
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 CMD ["tail", "-f", "/dev/null"]

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "imperfect-training",
+  "private_key_id": "fb4a0e2c9fc7be1b22fcb88238b142ccb1053b47",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC2EmQZZmkDndEg\n4UdUxkQNqQLAqF4TykRRCj5BaLx2w/2ElMxCCKb0GA2Sa+R0KlDIygP+r2Di6T+k\nYR0CUP9CSjzOBK6IE5Z325KzuJlFpKmVtvOgA+vMcd2h0Pyl1Uy5uKnjtHiiXhhk\ngUCumTR4x3PGDcm94cLtbaxKCNZnHCKcrY0c9kVcNAVwv7x5flgKWW+7OsaNo9Tv\nQ6TSc5gfQk7nTOWbetLr/9PU1CkAxh9XRuLB1dwTzatirgCy3CQPIEJzCrpMG10h\nLQGRLYDD9LMhCeaKYfygeKXCPlZSelLvNh+8lix22esQNRLourxqU8XOTyauEosR\nrNl4eEwXAgMBAAECggEAJDAvmSTTxpY9lM1yAhWOPTDUjTppyIExZvIkQZfxraFy\n6EEzAAT8OhP1zp6HP9eRSvdsJ9jv5un5blCnFWjH84MR5tjjX8SU6anI1NPiEweR\ndWJxteJRoccYCCujq8pjf56Gle2u9IbDTmaqVom49jCegEUJTiZrOgnMbsKm6sNE\n/bHWq9ednESM1YRn0w9rqhJPS+GHFdytT3Ng6DFASaYQBiLkv/lg8GgpRwOVWEKU\nBVxliPFOSwS8uFZcQLQC54oeAe7lHKwtVb9dfJkFz/4uAxYD+Wulgzz3z86ayzuu\nswAkGbne6DpGYowsAJBSXFX3x8wkXB23BH1AXwapkQKBgQDczvWYQjQ6RC1P9Jfv\nSLZWIPNdfjAbtncUl61AaIfqNjhxB9bwqPurIfoGuwuRlY6sbudEdorn2B/mNvUu\n65GJG0ER/B33sxnT0iAIb/2fe1+iIRTQnqw6WnnCOr2wU6EuwMJ7/CnIiL03t+rE\nJsIbo7V+5m185sE+lOB1UFTxNQKBgQDTFvf6j2cZmZ1tAN4Tjw1KKod+Z6IYKZqq\nzMjQl6FhraPp0WkWGr5Xbqdk9L2KGN89nCaldfZr/fzHyH4LnbNS/f4hzWtsQDpL\nSQ/5uE8Alye3jcXbuDoBV5hlvCAFv4RR/7NLMqWvoa2SCVpVbN4J/C+Wx7sPxch9\n2hD2mwJdmwKBgBBx9Yamf59LTpii3eH7Z2EYySdQa6LUvx+wgD3Iyz6dVSzN6as4\n2q2PNUDlE2J/YgXjqKPHtGa6CP4rX61j7A3rEriVL2IwW58UCkC2nowPMzsu/Y7g\nEnGyJVla6J/GSr3hq1pymGYQEQ+iSgDb5h8K3UybOtJPmVrg2arDFeB1AoGAMxwQ\nlr45/FzRXR8kph+w3BBIFjcJbEhGhqxmwvqzvG7KjUaC5zM6evjz1uHbMqCrDMPO\nJ6nULHmmxsionC9mx+VvrseKBv/WHXxnPdN+bWor16mgCn8krEaFQ7y1FC823pPG\n2aI9s7S1zfItyRk++bPx4dQiWsNMtAwkp1EI1ZkCgYBKYxa+75J6FpYAKXolqNLP\nL+mM0NXa1tHTLGKlLlAENkiGUf4CrQqo0qN/1ULrfYPNTMSapE4ukxvQ3/eI0gch\nKLhHTiGH0hXoF2zwpwKwIoXv5iClB/ZIdm4HpAdoCazG5YX1ASaEjT8EWsJg4lq0\n/+gTbvsJJb4ro3rR6u6dAw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "berhuchris@imperfect-training.iam.gserviceaccount.com",
+  "client_id": "114992666407756179340",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/berhuchris%40imperfect-training.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
