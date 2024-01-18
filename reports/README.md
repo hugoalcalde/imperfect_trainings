@@ -85,9 +85,9 @@ end of the project.
 
 ### Week 3
 
-* [ ] Check how robust your model is towards data drifting
-* [ ] Setup monitoring for the system telemetry of your deployed model
-* [ ] Setup monitoring for the performance of your deployed model
+* [x] Check how robust your model is towards data drifting
+* [x] Setup monitoring for the system telemetry of your deployed model
+* [x] Setup monitoring for the performance of your deployed model
 * [ ] If applicable, play around with distributed data loading
 * [ ] If applicable, play around with distributed model training
 * [ ] Play around with quantization, compilation and pruning for you trained models to increase inference speed
@@ -340,7 +340,7 @@ To execute a specific experiment configuration, and replicate the experiment on 
 >
 > Answer:
 
---- question 15 fill here ---
+For our project we devoloped on image, used for training and predictions. For example to run the docker image: "docker run gcr.io/imperfect-training/firstimage:latest" [Dockerfile](../dockerfiles/train_model.dockerfile). We used docker especially to get our project running in the VM. All the requirements and packages were installed initally. Furthermore, the access to google cloud services was passed over. Additionally, to git also dvc was installed for fast setup. We had trouble to perform the dvc pull command directly in the dockerfile. Instead, the data has to be pulled manually once the docker container was started. Therefore, it is difficult to pass over an entrypoint with instructions to run already a file. Instead, first the data has to downloaded using DVC. Nevertheless, we used especially yaml files and hydra for the experiments.
 
 ### Question 16
 
@@ -359,9 +359,9 @@ We tried using the build in debugger in VScode. However, since our code was not 
 
 We performed profiling several times. We used snakeviz to visualize the results. Here are two screenshots of profiling output of an experiment with the baseline configuration, with just 5 epochs:
 
-![Alt text](figures/snakeviz1.png)
+[Snakeviz1](figures/snakeviz1.png)
 
-![Alt text](figures/snakeviz2.png)
+[Snakeviz2](figures/snakeviz2.png)
 
 We can see that the function that took the longest to run was the backward pass. It took a total of 512.3 sec and it was called 15 times, therefore it took 34.15 per pass.
 
@@ -489,7 +489,7 @@ with around 30€. The compute engine were only a couple of euros. The Networkin
 >
 > Answer:
 
-![Diagram](figures/diagram.png)
+[Diagram](figures/diagram.png)
 
 The starting point of the diagram is our local setup, where we setup our code, which is version controlle by github. We integrated the third party package into the code to train our model. Once, this was working we included hydra for setting the hyperparameters, as well as setting up our experiment using yaml files. We also included weights and biases to efficiently track our training results. Once this was working, we created a dockercontainer and make it run in the container as well. This docker image was used to setup the virtual machine in the cloud. Thereby the image in the cloud was updated using a trigger flow. Nevertheless, we installed github in the docker to pull our progress in an ongoing basis. Therefore, we didn't have to use every single generated image. The code was tracked with github while the data tracking was outsourced to dvc. The central storage place of our data is the google bucket. Furthermore, some unit tests were created to make sure that the code is working after we commit new lines of code. This was done in github by setting up workflows. These workflows were triggered every time we commit something. In other words, we set up some continuous integration. We deployed the model using FastAPI.
 
@@ -504,8 +504,8 @@ The starting point of the diagram is our local setup, where we setup our code, w
 > *The biggest challenges in the project was using ... tool to do ... . The reason for this was ...*
 >
 > Answer:
-
---- question 26 fill here ---
+It took a long time to setup the google cloud. It took a long time to set up the images. Therefore, the errors in the image building process did not pop up immidiately. Also it was not super straight forward how to pass the authentication option of the google cloud in the docker file. It was kind of a try and error, which took longer than normally because there was always some waiting time. Furthermore, it was not really straight forward to get an initial understand what exactly a docker container is in comparison to a VM. The logs helped during the process but it was often still not super cristal clear what in the end the pain point was.
+In general, getting used to all the new tools introduced by the class was tough. Every single lectures brought in a newbattle, but it was worth it, since we are all going to use these methodologies in future projects and we will really benefit from it.
 
 ### Question 27
 
@@ -522,4 +522,6 @@ The starting point of the diagram is our local setup, where we setup our code, w
 >
 > Answer:
 
---- question 27 fill here ---
+Student s222577 was in charge of setting up the docker container for training our applications. Furthermore, the student was responsible for the big parts of the cloud setup of the project (container registry, VM, bucket etc.)
+Student s222522 was in charge of writting part of the code for the data preparation and training algorithm and implementing the tools for continuous integration.
+Overall, all members contributed equially to the project.
