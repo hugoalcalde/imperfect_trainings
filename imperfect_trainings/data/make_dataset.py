@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     # Specify batch size for DataLoader
 
-    batch_size = 32
+    batch_size = 10
 
     # Create a DataLoader for train set
 
