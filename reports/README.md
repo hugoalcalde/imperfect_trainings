@@ -395,7 +395,7 @@ We used the following two services: Bucket and Engine. Bucket is used to store o
 >
 > Answer:
 
-We used the compute engine to run our training in the cloud. We used instances with the following hardware
+We used the compute engine to run our training in the cloud. We used a instance with the following hardware: The machine type was e2-custom-8-16896, without a GPU. Furthermore, we used a boot disk with 50 GB. We used the service to train our model. First we created a docker image based on the dockerfile in git. FOllowing, we created a VM with a container image with the latest version of the image. The images are stored in the container registry. The docker image was pulled into the VM and finally executed. We also installed git in the image, to update our code on an ongoing base. 
 
 ### Question 19
 
