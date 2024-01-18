@@ -16,13 +16,13 @@ COPY imperfect-training.json /root/imperfect-training.json
 RUN curl -sSL https://sdk.cloud.google.com | bash
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 #ENV GDRIVE_CREDENTIALS_DATA: ${{secrets.GOOGLECLOUD_KEYS}}
-#RUN gcloud auth activate-service-account --key-file=/root/imperfect-training.json
+RUN gcloud auth activate-service-account --key-file=/root/imperfect-training.json
 #RUN gcloud auth activate-service-account --key-file=GDRIVE_CREDENTIALS_DATA
 
 # Pass Google Cloud credentials as a build argument
-ARG GDRIVE_CREDENTIALS_DATA
-ENV GDRIVE_CREDENTIALS_DATA $GDRIVE_CREDENTIALS_DATA
-RUN gcloud auth activate-service-account --key-file=$GDRIVE_CREDENTIALS_DATA
+#ARG GDRIVE_CREDENTIALS_DATA
+#ENV GDRIVE_CREDENTIALS_DATA $GDRIVE_CREDENTIALS_DATA
+#RUN gcloud auth activate-service-account --key-file=$GDRIVE_CREDENTIALS_DATA
 
 
 # Install DVC
