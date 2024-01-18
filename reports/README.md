@@ -404,7 +404,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
-[this figure](figures/bucket_project.png)
+[bucket](figures/bucket_project.png)
 
 ### Question 20
 
@@ -413,7 +413,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
-[this figure](figures/Container_registry_project.png).
+[Container registry](figures/Container_registry_project.png).
 
 ### Question 21
 
@@ -422,7 +422,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
-[this figure](figures/cloud_build_project.png)
+[Cloud build](figures/cloud_build_project.png)
 
 ### Question 22
 
@@ -467,7 +467,8 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
---- question 24 fill here ---
+Mainly one group member was responsible for the cloud setup so the majority of the costs are assigned to him. Somehow we spend a lot money on cloud storage, which were by far the highest costs 
+with around 30€. The compute engine were only a couple of euros. The Networking was the lowest with less then an Euro. 
 
 ## Overall discussion of project
 
@@ -488,7 +489,7 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
---- question 25 fill here ---
+The starting point of the diagram is our local setup, where we setup our code, which is version controlle by github. We integrated the third party package into the code to train our model. Once, this was working we included hydra for setting the hyperparameters, as well as setting up our experiment using yaml files. We also included weights and biases to efficiently track our training results. Once this was working, we created a dockercontainer and make it run in the container as well. This docker image was used to setup the virtual machine in the cloud. Thereby the image in the cloud was updated using a trigger flow. Nevertheless, we installed github in the docker to pull our progress in an ongoing basis. Therefore, we didn't have to use every single generated image. The code was tracked with github while the data tracking was outsourced to dvc. The central storage place of our data is the google bucket. Furthermore, some unit tests were created to make sure that the code is working after we commit new lines of code. This was done in github by setting up workflows. These workflows were triggered every time we commit something. In other words, we set up some continuous integration. We deployed the model using fastapi. 
 
 ### Question 26
 
