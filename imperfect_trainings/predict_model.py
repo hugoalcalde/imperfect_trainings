@@ -31,8 +31,8 @@ def predict(
     return torch.cat([model(batch) for batch, label in dataloader], 0)
 
 model = densenet121(spatial_dims=2, in_channels=1, out_channels=2)
-model.load_state_dict(torch.load("/gcs/head_ct_hemorrhage/data/processed/processed_tensor.pt"))   
-dataloader = torch.load("/gcs/head_ct_hemorrhage/trained_models/checkpoint.pth")["train_loader"]
+model.load_state_dict(torch.load("data/processed/processed_tensor.pt"))   
+dataloader = torch.load("trained_models/checkpoint.pth")["train_loader"]
 for i in [0,2,4,8] : 
 
     start = time.time()
