@@ -340,7 +340,7 @@ To execute a specific experiment configuration, and replicate the experiment on 
 >
 > Answer:
 
---- question 15 fill here ---
+For our project we devoloped on image, used for training and predictions. For example to run the docker image: "docker run gcr.io/imperfect-training/firstimage:latest" [Dockerfile](dockerfiles/train_model.dockerfile). We used docker especially to get our project running in the VM. All the requirements and packages were installed initally. Furthermore, the access to google cloud services was passed over. Additionally, to git also dvc was installed for fast setup. We had trouble to perform the dvc pull command directly in the dockerfile. Instead, the data has to be pulled manually once the docker container was started. Therefore, it is difficult to pass over an entrypoint with instructions to run already a file. Instead, first the data has to downloaded using DVC. Nevertheless, we used especially yaml files and hydra for the experiments.
 
 ### Question 16
 
