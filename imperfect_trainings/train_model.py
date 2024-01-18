@@ -46,13 +46,12 @@ log = logging.getLogger(__name__)
 @hydra.main(config_path="config", config_name="default_config.yaml", version_base=None)
 def train(config) : 
 
-    wandb.init(name = config["training_name"])
+    hparams=config.experiment
+
+    wandb.init(project = "MLOps_FinalProject", name = hparams["training_name"])
 
     # Get the original working directory
     original_wd = hydra.utils.get_original_cwd()
-
-    hparams=config.experiment
-    print(hparams['data_path'])
           
     # Change back to the original working directory
     os.chdir(original_wd)
