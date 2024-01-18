@@ -1,10 +1,10 @@
-learning_rate : 0.01
+learning_rate : 0.001
 loss_function:
   _target_: torch.nn.CrossEntropyLoss
 optimizer : 
   _target_: torch.optim.Adam
-epochs : 5
-training_name : wandb_run_0
-data_path : /data/processed/processed_tensor.pt
+epochs : 10
+training_name : baselinetraining
+data_path : data/processed/processed_tensor.pt
 percentage : 0
 seed_value : 42
