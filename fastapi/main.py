@@ -48,7 +48,7 @@ def classify_image(image_data):
     image = transform_normalize(image).unsqueeze(0) 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = densenet121(spatial_dims=2, in_channels=1, out_channels=2).to(device)
-    model.load_state_dict(torch.load("../models/wandb_test/checkpoint.pth"))    
+    model.load_state_dict(torch.load("../models/baselinetraining/checkpoint.pth"))    
     softmax = Softmax()
     logits = softmax(model(image.to(device)))
     return "Probablity of Hemorrhage {}".format(logits.detach().numpy()[0][1]), mean_intensity, image_shape
