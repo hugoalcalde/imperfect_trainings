@@ -11,7 +11,8 @@ COPY imperfect_trainings/ imperfect_trainings/
 COPY data/ data/
 
 WORKDIR /
-RUN pip install -r requirements.txt --no-cache-dir
+RUN --mount=type=cache,target=~/pip/.cache pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
-ENTRYPOINT ["python", "-u", "imperfect_trainings/train_model.py"]
+CMD ["python", "imperfect_trainings/train_model.py", "experiment=baseline"]
+
