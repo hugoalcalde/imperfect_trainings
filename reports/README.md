@@ -453,7 +453,9 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
---- question 23 fill here ---
+We implemented monitoring of the model by making use of the FastAPI application we developed. In that application, users can introduce an image and predict whether or not it has an hemorrhage. 
+The mean intensity and the size of the images are stored in a database (CSV file) and we can actually monitor any changes on the data distribution, such as higher image qualities because of development 
+of new equipment that could require us to retrain the model in the future. 
 
 ### Question 24
 
