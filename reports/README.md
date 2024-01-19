@@ -64,7 +64,7 @@ end of the project.
 * [x] Build the docker files locally and make sure they work as intended
 * [x] Write one or multiple configurations files for your experiments
 * [x] Used Hydra to load the configurations and manage your hyperparameters
-* [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
+* [x] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
 * [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
+* [x] Revisit your initial project description. Did the project turn out as you wanted?
 * [x] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [x] Uploaded all your code to github
 
 ## Group information
 
@@ -453,9 +453,9 @@ We used the compute engine to run our training in the cloud. We used a instance 
 >
 > Answer:
 
-We implemented monitoring of the model by making use of the FastAPI application we developed. In that application, users can introduce an image and predict whether or not it has an hemorrhage. 
-The mean intensity and the size of the images are stored in a database (CSV file) and we can actually monitor any changes on the data distribution, such as higher image qualities because of development 
-of new equipment that could require us to retrain the model in the future. 
+We implemented monitoring of the model by making use of the FastAPI application we developed. In that application, users can introduce an image and predict whether or not it has an hemorrhage.
+The mean intensity and the size of the images are stored in a database (CSV file) and we can actually monitor any changes on the data distribution, such as higher image qualities because of development
+of new equipment that could require us to retrain the model in the future.
 
 ### Question 24
 
@@ -524,7 +524,7 @@ In general, getting used to all the new tools introduced by the class was tough.
 > *All members contributed to code by...*
 >
 > Answer:
-Student s222700 was in charge of developing the initial setting up of the cookie cutter project, as well as writting part of the code for training (including Weights and Biases) and developing the monitoring system. 
+Student s222700 was in charge of developing the initial setting up of the cookie cutter project, as well as writting part of the code for training (including Weights and Biases) and developing the monitoring system.
 Student s222577 was in charge of setting up the docker container for training our applications. Furthermore, the student was responsible for the big parts of the cloud setup of the project (container registry, VM, bucket etc.).
 Student s222522 was in charge of writting part of the code for the data preparation and training algorithm and implementing the tools for continuous integration.
 Overall, all members contributed equially to the project.
