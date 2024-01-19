@@ -524,7 +524,7 @@ In general, getting used to all the new tools introduced by the class was tough.
 > *All members contributed to code by...*
 >
 > Answer:
-
+Student s222700 was in charge of developing the initial setting up of the cookie cutter project, as well as writting part of the code for training (including Weights and Biases) and developing the monitoring system. 
 Student s222577 was in charge of setting up the docker container for training our applications. Furthermore, the student was responsible for the big parts of the cloud setup of the project (container registry, VM, bucket etc.).
 Student s222522 was in charge of writting part of the code for the data preparation and training algorithm and implementing the tools for continuous integration.
 Overall, all members contributed equially to the project.
